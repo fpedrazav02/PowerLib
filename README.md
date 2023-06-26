@@ -14,4 +14,4 @@ Integration Capabilities: PowerLib facilitates seamless integration between vari
 
 Report Generation: With PowerLib, generating comprehensive and insightful reports becomes effortless. The library provides tools and functions to extract, transform, and present data in a meaningful way, ensuring that the information is properly formatted and readily accessible for analysis and decision-making.
 
-Documentation and Ease of Use: PowerLib is designed with simplicity and ease of use in mind. Extensive documentation accompanies the library, offering clear explanations, examples, and usage guidelines for each component. This ensures that anyone, regardless of their level of expertise, can leverage PowerLib effectively.
+Documentation and Ease of Use: PowerLib is designed with simplicity and ease of use in mind. Extensive documentation accompanies the library, offering clear explanations, examples, and usage guidelines for each component. This ensures that anyone, regardless of their level of expertise, can leverage PowerLib effectively.Additionally, the library offers cmdlet documentation, providing clear explanations for official cmdlet is needed it.

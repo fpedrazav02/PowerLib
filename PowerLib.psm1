@@ -12,8 +12,8 @@ Import specific module:
     Import-Module -Name ".\PowerLibrary\moduleA"
 #>
 
-Import-Module -Name "$PSScriptRoot\moduleA"  -Force
-Import-Module -Name "$PSScriptRoot\moduleB"  -Force
+Import-Module -Name "$PSScriptRoot\AD"  -Force
+Import-Module -Name "$PSScriptRoot\PowerVisuals"  -Force
 
 Export-ModuleMember -Function * -Cmdlet *
     
