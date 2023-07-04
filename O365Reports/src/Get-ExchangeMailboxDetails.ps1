@@ -17,20 +17,49 @@
 function Get-ExchangeMailboxDetails {
 
     [CmdletBinding()]
-
     [Alias()]
-    [OutPutType()]
+    [OutPutType([System.Array])]
     
     param (
+        #Param Mailboxes
+        [Parameter(Mandatory=$true,ParameterSetName="Exchange MailBoxes")]
+        [ValidateNotNullOrEmpty()]
+        [ValidateNotnull()]
+        [System.Array]
+        $Mailboxes,
+
+        #Param Output
+        # Parameter help description
         [Parameter()]
-        [TypeName]
-        $ParameterName
+        [ValidateSet("CSV","GRID","HTML")]
+        [string]
+        $Output
     )
     Begin{
-
+        try {
+            $connections = Get-ConnectionInformation | Select-Object -Property Name | ForEach-Object {$_ -like "*ExchangeOnline*"}
+            if ($true -in $connections)
+            {
+                CenterPrompt -text "Connection Stablished"
+            }
+            else {
+                throw
+            }
+        }
+        catch {
+            CenterPrompt -text "You must first connect to exchange online"
+        }
     }
     Process{
-
+        switch ($Output) {
+            condition {  }
+            Default {
+                foreach ($mbox in $Mailboxes)
+                {
+                    $UserData = Get-MailBox -Identity $mbox | select WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+                }
+            }
+        }
     }
     End{
 
