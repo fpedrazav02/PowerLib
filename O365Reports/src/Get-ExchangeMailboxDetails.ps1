@@ -63,10 +63,10 @@ function Get-ExchangeMailboxDetails {
                 $obj.ExchangeGuid = $UserData.ExchangeGuid
                 $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
                 $obj.IsDirSynced = $UserData.IsDirSynced
-                $obj.Smtps = $UserData.EmailAddresses
-                $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
                 $obj.AccountType = $UserData.RecipientType
                 $obj.MailboxType = $UserData.RecipientTypeDetails
+                $obj.Smtps = $UserData.EmailAddresses
+                $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
                 $obj.CreationDate = $UserData.WhenCreated
 
                 $MailBoxArr += $obj
@@ -74,6 +74,9 @@ function Get-ExchangeMailboxDetails {
         }
     End{
         switch ($Output) {
+            HTML {
+                $MailBoxArr | Out-GridHtml
+            }
             GRID {
                 $MailBoxArr | Out-GridView
             }
