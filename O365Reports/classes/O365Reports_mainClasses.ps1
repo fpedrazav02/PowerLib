@@ -1,6 +1,7 @@
 Class ExchangeMailbox {
 
-    #Class specifics    
+    #Class specifics
+    [Int32]$ID                  # ID enumeration
     [string]$Mail               # Mailbox UPN
     [string]$ExchangeGuid       # Mailbox ID
     [bool]$IsMailboxEnabled     # Boolean is Mailbox is Enabled or disabled

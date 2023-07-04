@@ -53,12 +53,14 @@ function Get-ExchangeMailboxDetails {
         }
     }
     Process{
+            $count = 0
             foreach ($mbox in $Mailboxes)
             {
                 $obj = [ExchangeMailbox]::new()
                 $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
                     
                 Start-Sleep 1
+                $obj.ID = $count
                 $obj.Mail = $UserData.WindowsLiveID
                 $obj.ExchangeGuid = $UserData.ExchangeGuid
                 $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
@@ -70,6 +72,7 @@ function Get-ExchangeMailboxDetails {
                 $obj.CreationDate = $UserData.WhenCreated
 
                 $MailBoxArr += $obj
+                $count++
             }
         }
     End{
