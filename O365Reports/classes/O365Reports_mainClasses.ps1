@@ -22,8 +22,9 @@ Class ExchangeMailbox {
         $this.Mail = $Mail
     }
 
-    ExchangeMailbox ([string]$Mail, [string]$ExchangeGuid, [bool]$IsMailboxEnabled, [bool]$IsDirSynced,[string]$PrimarySmtpAddress,[string]$Smtps,[string]$AccountType,[string]$MailboxType,[string]$CreationDate)
+    ExchangeMailbox ([Int32]$ID,[string]$Mail, [string]$ExchangeGuid, [bool]$IsMailboxEnabled, [bool]$IsDirSynced,[string]$PrimarySmtpAddress,[string]$Smtps,[string]$AccountType,[string]$MailboxType,[string]$CreationDate)
     {
+        $this.ID = $ID
         $this.Mail = $Mail
         $this.ExchangeGuid = $ExchangeGuid
         $this.IsMailboxEnabled = $IsMailboxEnabled
