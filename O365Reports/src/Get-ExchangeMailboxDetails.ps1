@@ -78,7 +78,12 @@ function Get-ExchangeMailboxDetails {
     End{
         switch ($Output) {
             HTML {
-                $MailBoxArr | Out-GridHtml
+                try {
+                    $MailBoxArr | Out-GridHtml
+                }
+                catch {
+                }
+                
             }
             GRID {
                 $MailBoxArr | Out-GridView
