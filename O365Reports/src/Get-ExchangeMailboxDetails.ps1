@@ -53,34 +53,37 @@ function Get-ExchangeMailboxDetails {
         }
     }
     Process{
-        switch ($Output) {
-            condition {  }
-            Default {
-                foreach ($mbox in $Mailboxes)
-                {
-                    $obj = [ExchangeMailbox]::new()
-                    $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+            foreach ($mbox in $Mailboxes)
+            {
+                $obj = [ExchangeMailbox]::new()
+                $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
                     
-                    Start-Sleep 1
-                    $obj.Mail = $UserData.WindowsLiveID
-                    $obj.ExchangeGuid = $UserData.ExchangeGuid
-                    $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
-                    $obj.IsDirSynced = $UserData.IsDirSynced
-                    $obj.Smtps = $UserData.EmailAddresses
-                    $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
-                    $obj.AccountType = $UserData.RecipientType
-                    $obj.MailboxType = $UserData.RecipientTypeDetails
-                    $obj.CreationDate = $UserData.WhenCreated
+                Start-Sleep 1
+                $obj.Mail = $UserData.WindowsLiveID
+                $obj.ExchangeGuid = $UserData.ExchangeGuid
+                $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
+                $obj.IsDirSynced = $UserData.IsDirSynced
+                $obj.Smtps = $UserData.EmailAddresses
+                $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
+                $obj.AccountType = $UserData.RecipientType
+                $obj.MailboxType = $UserData.RecipientTypeDetails
+                $obj.CreationDate = $UserData.WhenCreated
 
-                    $MailBoxArr += $obj
-                }
+                $MailBoxArr += $obj
             }
         }
-    }
     End{
-        $MailBoxArr | Out-Default
-        CenterPrompt -text "Finished"
-        return $MailBoxArr 
+        switch ($Output) {
+            GRID {
+                $MailBoxArr | Out-GridView
+            }
+            Default {
+                $MailBoxArr | Out-Default
+                CenterPrompt -text "Finished"
+                return $MailBoxArr
+            }
+        }
+         
     }
     
 }
