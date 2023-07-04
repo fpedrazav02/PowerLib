@@ -5,10 +5,10 @@ Class ExchangeMailbox {
     [string]$ExchangeGuid       # Mailbox ID
     [bool]$IsMailboxEnabled     # Boolean is Mailbox is Enabled or disabled
     [bool]$IsDirSynced          # Cloud or On-premise based resource
-    [string]$Smtps              # All Smtps alias for the desginated Mailbox
-    [string]$PrimarySmtpAddress # Principal SMTP
     [string]$AccountType        # Original type of account
     [string]$MailboxType        # Actual Type of Mailbox
+    [string]$PrimarySmtpAddress # Principal SMTP
+    [string]$Smtps              # All Smtps alias for the desginated Mailbox
     [string]$CreationDate       # Date of creation
 
     #Class OverloadMethods
@@ -27,10 +27,10 @@ Class ExchangeMailbox {
         $this.ExchangeGuid = $ExchangeGuid
         $this.IsMailboxEnabled = $IsMailboxEnabled
         $this.IsDirSynced = $IsDirSynced
-        $this.Smtps = $Smtps
-        $this.PrimarySmtpAddress = $PrimarySmtpAddress
         $this.AccountType = $AccountType
         $this.MailboxType = $MailboxType
+        $this.PrimarySmtpAddress = $PrimarySmtpAddress
+        $this.Smtps = $Smtps
         $this.CreationDate = $CreationDate
     }
 
