@@ -73,7 +73,6 @@ function Get-ExchangeMailboxDetails {
 
                 $MailBoxArr += $obj
                 $count = $count + 1
-                write-host $count
             }
         }
     End{
