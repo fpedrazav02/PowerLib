@@ -72,7 +72,8 @@ function Get-ExchangeMailboxDetails {
                 $obj.CreationDate = $UserData.WhenCreated
 
                 $MailBoxArr += $obj
-                $count++
+                $count = $count + 1
+                write-host $count
             }
         }
     End{
