@@ -79,7 +79,7 @@ function Get-ExchangeMailboxDetails {
         switch ($Output) {
             HTML {
                 try {
-                    $MailBoxArr | Out-GridHtml
+                    $MailBoxArr | Out-HtmlView
                 }
                 catch {
                 }
