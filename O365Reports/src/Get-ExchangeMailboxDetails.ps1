@@ -84,7 +84,8 @@ function Get-ExchangeMailboxDetails {
                 }
                 
                 # Apply custom CSS styles
-                $style = "<style>
+                $style = @"
+                <style>
                 table {
                     border: 1px solid #ddd;
                     font-family: Arial, sans-serif;
@@ -106,9 +107,8 @@ function Get-ExchangeMailboxDetails {
                 tr:hover {
                     background-color: #f5f5f5;
                 }
-            </style>"
-               
-                
+            </style>
+"@
                 # Output the styled table
                 $tableHtml = $table | ConvertTo-Html -Head $style
                 $tableHtml | Out-HtmlView
