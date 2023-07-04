@@ -78,11 +78,40 @@ function Get-ExchangeMailboxDetails {
     End{
         switch ($Output) {
             HTML {
-                try {
-                    $MailBoxArr | Out-HtmlView
+                $table = $MailBoxArr | ConvertTo-HtmlTable -As 'BareTable' -PropertyStyle @{
+                    'border-collapse' = 'collapse'
+                    'width' = '100%'
                 }
-                catch {
+                
+                # Apply custom CSS styles
+                $style = "<style>
+                table {
+                    border: 1px solid #ddd;
+                    font-family: Arial, sans-serif;
+                    font-size: 12px;
                 }
+            
+                th {
+                    background-color: #f2f2f2;
+                    border-bottom: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: left;
+                }
+            
+                td {
+                    border-bottom: 1px solid #ddd;
+                    padding: 8px;
+                }
+            
+                tr:hover {
+                    background-color: #f5f5f5;
+                }
+            </style>"
+               
+                
+                # Output the styled table
+                $tableHtml = $table | ConvertTo-Html -Head $style
+                $tableHtml | Out-HtmlView
                 
             }
             GRID {
