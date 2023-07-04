@@ -45,9 +45,11 @@ function Get-ExchangeMailboxDetails {
             else {
                 throw
             }
+            $MailBoxArr = @()
         }
         catch {
             CenterPrompt -text "You must first connect to exchange online"
+            exit 1
         }
     }
     Process{
@@ -56,13 +58,29 @@ function Get-ExchangeMailboxDetails {
             Default {
                 foreach ($mbox in $Mailboxes)
                 {
-                    $UserData = Get-MailBox -Identity $mbox | select WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+                    $obj = [ExchangeMailbox]::new()
+                    $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+                    
+                    Start-Sleep 1
+                    $obj.Mail = $UserData.WindowsLiveID
+                    $obj.ExchangeGuid = $UserData.ExchangeGuid
+                    $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
+                    $obj.IsDirSynced = $UserData.IsDirSynced
+                    $obj.Smtps = $UserData.EmailAddresses
+                    $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
+                    $obj.AccountType = $UserData.RecipientType
+                    $obj.MailboxType = $UserData.RecipientTypeDetails
+                    $obj.CreationDate = $UserData.WhenCreated
+
+                    $MailBoxArr += $obj
                 }
             }
         }
     }
     End{
-
+        $MailBoxArr | Out-Default
+        CenterPrompt -text "Finished"
+        return $MailBoxArr 
     }
     
 }
