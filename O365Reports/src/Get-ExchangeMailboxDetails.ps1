@@ -81,9 +81,9 @@ function Get-ExchangeMailboxDetails {
                 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
                 [void] [Reflection.Assembly]::LoadWithPartialName( 'System.Windows.Forms' )
                 $dialog = New-Object Windows.Forms.FolderBrowserDialog
-                $dialog.ShowDialog( )
+                $result = $dialog.ShowDialog( )
 
-                if (!($result -eq [System.Windows.Forms.DialogResult]::OK)) {
+                if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
                     CenterPrompt -text "No folder selected"
                     exit 1
                 }
