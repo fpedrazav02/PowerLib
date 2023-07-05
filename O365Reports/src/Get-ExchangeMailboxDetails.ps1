@@ -80,7 +80,7 @@ function Get-ExchangeMailboxDetails {
             CSV {
                 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
                 [void] [Reflection.Assembly]::LoadWithPartialName( 'System.Windows.Forms' )
-                $dialog = New-Object Windows.Forms.dia
+                $dialog = New-Object Windows.Forms.FolderBrowserDialog
                 $dialog.ShowHelp = $true
                 $dialog.ShowDialog( )
 
