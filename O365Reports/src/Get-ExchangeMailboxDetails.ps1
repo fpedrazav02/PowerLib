@@ -40,7 +40,7 @@ function Get-ExchangeMailboxDetails {
             $connections = Get-ConnectionInformation | Select-Object -Property Name | ForEach-Object {$_ -like "*ExchangeOnline*"}
             if ($true -in $connections)
             {
-                CenterPrompt -text "Connection Stablished"
+                New-PSPrompt -text "Connection Stablished"
             }
             else {
                 throw
@@ -48,7 +48,7 @@ function Get-ExchangeMailboxDetails {
             $MailBoxArr = @()
         }
         catch {
-            CenterPrompt -text "You must first connect to exchange online"
+            New-PSPrompt -text "You must first connect to exchange online"
             exit 1
         }
     }
@@ -88,7 +88,7 @@ function Get-ExchangeMailboxDetails {
                 $result = $dialog.ShowDialog( )
 
                 if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
-                    CenterPrompt -text "No folder selected"
+                    New-PSPrompt -text "No folder selected"
                     exit 1
                 }
 
@@ -124,7 +124,7 @@ function Get-ExchangeMailboxDetails {
             }
             Default {
                 $MailBoxArr | Out-Default
-                CenterPrompt -text "Finished"
+                New-PSPrompt -text "Finished"
                 return $MailBoxArr
             }
         }

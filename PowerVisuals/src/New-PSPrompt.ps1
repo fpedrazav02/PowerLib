@@ -1,4 +1,4 @@
-function CenterPrompt {
+function New-PSPrompt {
     param (
         [Parameter(Mandatory = $true)]
         [string[]]$text,
