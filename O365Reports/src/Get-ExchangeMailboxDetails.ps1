@@ -84,9 +84,10 @@ function Get-ExchangeMailboxDetails {
                 $dialog.ShowDialog( )
 
                 if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
-                    Write-Host "Selected file: $($d.FileName)"
+                    Write-Host "Selected file: $($dialog.FileName)"
                 } else {
-                    Write-Host "No file selected."
+                    CenterPrompt -text "No file selected"
+                    exit 1
                 }
 
             }
