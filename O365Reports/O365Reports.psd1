@@ -60,10 +60,10 @@ Copyright = '(c) fpedraza. All rights reserved.'
 ScriptsToProcess = @(".\classes\O365Reports_mainClasses.ps1", ".\classes\ExchangeReportClasses.ps1")
 
 # Type files (.ps1xml) to be loaded when importing this module
- TypesToProcess = @(".\ClassFormats\ExchangeReportClasses.ps1xml")
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+ FormatsToProcess = @(".\ClassFormats\ExchangeReportClasses.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @()
