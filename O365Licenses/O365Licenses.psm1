@@ -9,4 +9,4 @@ Foreach ($import in @($func)) {
 
     }
 }
-Export-ModuleMember -Function '*'
+Export-ModuleMember -Function '*' -Cmdlet '*' -Alias '*'
