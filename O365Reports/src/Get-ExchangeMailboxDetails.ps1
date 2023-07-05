@@ -78,7 +78,17 @@ function Get-ExchangeMailboxDetails {
     End{
         switch ($Output) {
             CSV {
-                
+                [void] [Reflection.Assembly]::LoadWithPartialName( 'System.Windows.Forms' )
+                $dialog = New-Object Windows.Forms.OpenFileDialog
+                $dialog.ShowHelp = $true
+                $dialog.ShowDialog( )
+
+                if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
+                    Write-Host "Selected file: $($d.FileName)"
+                } else {
+                    Write-Host "No file selected."
+                }
+
             }
             HTML {
                 $MailBoxArr | ConvertTo-Html | Out-HtmlView
