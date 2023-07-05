@@ -100,9 +100,7 @@ function Get-ExchangeMailboxDetails {
                 Write-Host "File saved at " -NoNewline
                 Write-Host "`e[1m$filepath`e[0m" -ForegroundColor Red
                 $message = "Report saved at: $filepath"
-                
-
-                [System.Windows.MessageBox]::Show($message, 'Information', 'OK', 'Information')
+                New-Divider
             }
             HTML {
                 $MailBoxArr | ConvertTo-Html | Out-HtmlView
