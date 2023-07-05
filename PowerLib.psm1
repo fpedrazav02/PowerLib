@@ -15,6 +15,9 @@ Import specific module:
 Import-Module -Name "$PSScriptRoot\AD"  -Force 
 Import-Module -Name "$PSScriptRoot\PowerVisuals"  -Force
 Import-Module -Name "$($PSScriptRoot)\O365Reports\O365Reports.psd1"  -Force -Verbose
+
+"$($PSScriptRoot)\O365Reports\classes\ExchangeReportClasses.ps1"
+
  # Import-Module -Name
 
 Export-ModuleMember -Function * -Cmdlet * -Alias *
