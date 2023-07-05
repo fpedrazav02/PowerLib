@@ -86,7 +86,8 @@ function Get-ExchangeMailboxDetails {
                 Start-Sleep 1
                 if ($Result -eq 'Yes') {
 
-                    $MailBoxArr | Export-Csv -Path "C:\Users\$($env:USERNAME)\Desktop\$DynamicDistributionGroupList.csv"
+                    $filename = "ExchangeMailboxDetails$((Get-Date).ToString("yyMMdd"))"
+                    $MailBoxArr | Export-Csv -Path "C:\Users\$($env:USERNAME)\Desktop\$filename.csv"
 
                     $message = 'EL reporte ha sido guardado en el escritorio'
                     [System.Windows.MessageBox]::Show($message, 'Information', 'OK', 'Information')
