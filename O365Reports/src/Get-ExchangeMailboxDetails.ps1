@@ -78,6 +78,7 @@ function Get-ExchangeMailboxDetails {
     End{
         switch ($Output) {
             CSV {
+                [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
                 [void] [Reflection.Assembly]::LoadWithPartialName( 'System.Windows.Forms' )
                 $dialog = New-Object Windows.Forms.OpenFileDialog
                 $dialog.ShowHelp = $true
@@ -88,8 +89,12 @@ function Get-ExchangeMailboxDetails {
                     exit 1
                 }
 
-                $filename = "$($dialog.$filename)/ExchangeMailboxDetails$((Get-Date).ToString("yyMMdd")).csv"
+                $filepath = "$($dialog.$filename)/ExchangeMailboxDetails$((Get-Date).ToString("yyMMdd")).csv"
 
+                $MailBoxArr | Export-Csv -Path $filepath
+
+                $message = "Report saved at: $filepath"
+                [System.Windows.MessageBox]::Show($message, 'Information', 'OK', 'Information')
             }
             HTML {
                 $MailBoxArr | ConvertTo-Html | Out-HtmlView
