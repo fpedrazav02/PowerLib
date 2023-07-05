@@ -97,7 +97,7 @@ function Get-ExchangeMailboxDetails {
                 $MailBoxArr | Export-Csv -Path $filepath
 
                 Write-Host "├─" -NoNewline -ForegroundColor Cyan
-                Write-Host "File saved at" -NoNewline
+                Write-Host "File saved at " -NoNewline
                 Write-Host "`e[1m$filepath`e[0m" -ForegroundColor Red
                 $message = "Report saved at: $filepath"
                 
