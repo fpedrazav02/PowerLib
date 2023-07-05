@@ -83,12 +83,12 @@ function Get-ExchangeMailboxDetails {
                 $dialog.ShowHelp = $true
                 $dialog.ShowDialog( )
 
-                if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
-                    Write-Host "Selected file: $($dialog.FileName)"
-                } else {
+                if (!($result -eq [System.Windows.Forms.DialogResult]::OK)) {
                     CenterPrompt -text "No file selected"
                     exit 1
                 }
+
+                $filename = "$($dialog.$filename)/ExchangeMailboxDetails$((Get-Date).ToString("yyMMdd")).csv"
 
             }
             HTML {
