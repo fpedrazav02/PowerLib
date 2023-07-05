@@ -83,6 +83,9 @@ function Get-ExchangeMailboxDetails {
                 $dialog = New-Object Windows.Forms.FolderBrowserDialog
                 $result = $dialog.ShowDialog( )
 
+                Write-Host "├─" -NoNewline -ForegroundColor Cyan
+                Write-Host "Folder Dialog Opened"
+
                 if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
                     CenterPrompt -text "No folder selected"
                     exit 1
@@ -92,7 +95,12 @@ function Get-ExchangeMailboxDetails {
 
                 $MailBoxArr | Export-Csv -Path $filepath
 
+                Write-Host "├─" -NoNewline -ForegroundColor Cyan
+                Write-Host "File saved at" -NoNewline
+                Write-Host "$filepath" -ForegroundColor Red
                 $message = "Report saved at: $filepath"
+                
+
                 [System.Windows.MessageBox]::Show($message, 'Information', 'OK', 'Information')
             }
             HTML {
