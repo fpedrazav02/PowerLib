@@ -80,11 +80,12 @@ function Get-ExchangeMailboxDetails {
             CSV {
                 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
                 [void] [Reflection.Assembly]::LoadWithPartialName( 'System.Windows.Forms' )
-                $dialog = New-Object Windows.Forms.FolderBrowserDialog
-                $result = $dialog.ShowDialog( )
 
                 Write-Host "├─" -NoNewline -ForegroundColor Cyan
                 Write-Host "Folder Dialog Opened"
+
+                $dialog = New-Object Windows.Forms.FolderBrowserDialog
+                $result = $dialog.ShowDialog( )
 
                 if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
                     CenterPrompt -text "No folder selected"
