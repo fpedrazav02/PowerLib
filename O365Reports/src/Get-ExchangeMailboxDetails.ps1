@@ -84,7 +84,7 @@ function Get-ExchangeMailboxDetails {
                 $dialog.ShowDialog( )
 
                 if (!($result -eq [System.Windows.Forms.DialogResult]::OK)) {
-                    CenterPrompt -text "No file selected"
+                    CenterPrompt -text "No folder selected"
                     exit 1
                 }
 
