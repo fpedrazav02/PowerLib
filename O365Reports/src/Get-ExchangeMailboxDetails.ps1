@@ -81,6 +81,22 @@ function Get-ExchangeMailboxDetails {
                 $MailBoxArr | ConvertTo-Html | Out-HtmlView
             }
             GRID {
+                $Result = [System.Windows.MessageBox]::Show('¿Desea guardar los usuarios?', 'Confirm', 'YesNo', 'Question')
+
+                Start-Sleep 1
+                if ($Result -eq 'Yes') {
+
+                    $MailBoxArr | Export-Csv -Path "C:\Users\$($env:USERNAME)\Desktop\$DynamicDistributionGroupList.csv"
+
+                    $message = 'EL reporte ha sido guardado en el escritorio'
+                    [System.Windows.MessageBox]::Show($message, 'Information', 'OK', 'Information')
+
+                } else {
+                    $DynamicDistributionUserList |
+                    Select-Object Identity,PrimarySmtpAddress,CustomAttribute1,CustomAttribute2,CustomAttribute3,CustomAttribute4 |
+                    Out-GridView -Title "Usarios de $DynamicDistributionUserList" -OutputMode Single
+                }
+
                 $MailBoxArr | Out-GridView
             }
             Default {
