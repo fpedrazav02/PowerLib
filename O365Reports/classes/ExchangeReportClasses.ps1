@@ -1,4 +1,6 @@
-class ExchangeMailbox {
+Class ExchangeMailbox {
+
+    #Class specifics
     [Int32]$ID                  # ID enumeration
     [string]$Mail               # Mailbox UPN
     [string]$ExchangeGuid       # Mailbox ID
@@ -7,12 +9,21 @@ class ExchangeMailbox {
     [string]$AccountType        # Original type of account
     [string]$MailboxType        # Actual Type of Mailbox
     [string]$PrimarySmtpAddress # Principal SMTP
-    [string]$Smtps              # All Smtps alias for the designated Mailbox
+    [string]$Smtps              # All Smtps alias for the desginated Mailbox
     [string]$CreationDate       # Date of creation
 
-    ExchangeMailbox ([Int32]$ID, [string]$Mail, [string]$ExchangeGuid, [bool]$IsMailboxEnabled, [bool]$IsDirSynced,
-                     [string]$PrimarySmtpAddress, [string]$Smtps, [string]$AccountType, [string]$MailboxType,
-                     [string]$CreationDate) {
+    #Class OverloadMethods
+        #Default OverloadDefinition
+    ExchangeMailbox () {} 
+
+        #Only Mail default OverloadDefinition
+    ExchangeMailbox ([string]$Mail)
+    {
+        $this.Mail = $Mail
+    }
+
+    ExchangeMailbox ([Int32]$ID,[string]$Mail, [string]$ExchangeGuid, [bool]$IsMailboxEnabled, [bool]$IsDirSynced,[string]$PrimarySmtpAddress,[string]$Smtps,[string]$AccountType,[string]$MailboxType,[string]$CreationDate)
+    {
         $this.ID = $ID
         $this.Mail = $Mail
         $this.ExchangeGuid = $ExchangeGuid
@@ -24,4 +35,6 @@ class ExchangeMailbox {
         $this.Smtps = $Smtps
         $this.CreationDate = $CreationDate
     }
+
+    #Class Methods
 }

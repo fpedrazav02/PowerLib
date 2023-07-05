@@ -57,13 +57,13 @@ Copyright = '(c) fpedraza. All rights reserved.'
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @(".\classes\O365Reports_mainClasses.ps1", ".\classes\ExchangeReportClasses.ps1")
+ScriptsToProcess = @(".\classes\ExchangeReportClasses.ps1")
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
- FormatsToProcess = @(".\ClassFormats\ExchangeReportClasses.ps1xml")
+# FormatsToProcess = @(".\ClassFormats\ExchangeReportClasses.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @()
