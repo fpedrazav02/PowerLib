@@ -18,6 +18,7 @@ foreach ($module in $Modules)
 {
     if ($module.Name -notin $exceptions)
     {
+        Write-Host "`e[2mFound Module at:`e[0m"-NoNewline -ForegroundColor Red
         Write-Host $module.FullName
         Import-Module -Name "$($module.FullName)" -Force
     }
