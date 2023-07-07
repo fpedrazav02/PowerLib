@@ -15,6 +15,10 @@ Import specific module:
 $Modules = Get-ChildItem $PSScriptRoot -Directory
 $exceptions = @('.vscode')
 
+foreach ($module in $Modules)
+{
+    Import-Module -Name "$($module.Name)" -Force
+}
 
  # Import-Module -Name
 
