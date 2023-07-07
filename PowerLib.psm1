@@ -17,10 +17,10 @@ $exceptions = @('.vscode')
 
 foreach ($module in $Modules)
 {
-    if (!($moudle -in $exceptions))
+    if (!($module -in $exceptions))
     {
         Write-Host $module.FullName
-        Import-Module -Name ".\$($module.Name)" -Force
+        Import-Module -Name "$($module.FullName)" -Force
     }
 }
 
