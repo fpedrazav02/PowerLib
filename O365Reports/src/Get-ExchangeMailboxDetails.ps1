@@ -53,6 +53,7 @@ function Get-ExchangeMailboxDetails {
         }
     }
     Process{
+            Import-Module -Name "..\classes\ExchangeReport.Class.ps1" -Force
             $count = 0
             foreach ($mbox in $Mailboxes)
             {
