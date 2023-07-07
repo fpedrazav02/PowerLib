@@ -15,7 +15,7 @@
     * Depends on the main classes of the module *
 #>
 function Get-ExchangeMailboxDetails {
-
+    
     [CmdletBinding()]
     [Alias()]
     [OutPutType([System.Array])]
@@ -36,7 +36,7 @@ function Get-ExchangeMailboxDetails {
         $Output
     )
     Begin{
-        using module ..\classes\ExchangeReport.Class.psm1
+        
         try {
             $connections = Get-ConnectionInformation | Select-Object -Property Name | ForEach-Object {$_ -like "*ExchangeOnline*"}
             if ($true -in $connections)
