@@ -58,7 +58,7 @@ function Get-ExchangeMailboxDetails {
             {
                 try {
                     $obj = [ExchangeMailbox]::new()
-                    $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+                    $UserData = Get-MailBox -Identity $mbox -ErrorAction Stop | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
                         
                     Start-Sleep 1
                     $obj.ID = $count
