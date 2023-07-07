@@ -20,6 +20,9 @@ foreach ($module in $Modules)
     {
         $text = "Found Module "
         Write-Host "`e[1m$text`e[0m"-NoNewline -ForegroundColor Green
+        Write-Host "`e[1m$($module.Name)`e[0m "-NoNewline -ForegroundColor Cyan
+        $text = "at: "
+        Write-Host "`e[1m$text`e[0m"-NoNewline -ForegroundColor Green
         Write-Host $module.FullName
         Import-Module -Name "$($module.FullName)" -Force
     }
