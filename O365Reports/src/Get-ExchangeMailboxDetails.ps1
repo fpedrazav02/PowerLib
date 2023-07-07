@@ -40,7 +40,7 @@ function Get-ExchangeMailboxDetails {
             [void][ExchangeMailbox]::new()
         }
         catch {
-            New-PSPrompt -text "Please import module classes with: ","$($PSScriptRoot)"
+            New-PSPrompt -text "Please import module classes with: ","Import-Module -name '$($PSScriptRoot)"
             exit 1
         }
         try {
