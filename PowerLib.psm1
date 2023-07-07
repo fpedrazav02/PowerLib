@@ -19,8 +19,8 @@ foreach ($module in $Modules)
 {
     if (!($moudle -in $exceptions))
     {
-        Write-Host $module.Name
-        Import-Module -Name "$($module.Name)" -Force
+        Write-Host $module.FullName
+        Import-Module -Name ".\$($module.Name)" -Force
     }
 }
 
