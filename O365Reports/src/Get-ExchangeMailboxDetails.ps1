@@ -73,7 +73,7 @@ function Get-ExchangeMailboxDetails {
                     $obj.CreationDate = $UserData.WhenCreated 
                 }
                 catch {
-
+                    $obj = [ExchangeMailbox]::new()
                 }
                 finally{
                     $MailBoxArr += $obj
