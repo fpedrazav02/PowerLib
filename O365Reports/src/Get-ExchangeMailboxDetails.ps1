@@ -42,9 +42,11 @@ function Get-ExchangeMailboxDetails {
         catch {
             $path = ($PSScriptRoot -split "\\")
             $joined = $path[0..($path.Count-2)] -join "\"
+            $finalText = "Import-Module -name '$($joined)\classes\ExchangeReport.Class.ps1' -Force"
+            $cmdImport = "`e[1m$finalText`e[0m"
             Clear-Host
             New-PSPrompt -text "Please import module classes with: "
-            Write-Host "Import-Module -name '$($joined) -Force"
+            Write-Host "$cmdImport" -ForegroundColor Cyan -BackgroundColor White
             New-Divider
             exit 1
         }
