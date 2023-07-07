@@ -38,3 +38,5 @@ Class ExchangeMailbox {
 
     #Class Methods
 }
+
+Export-ModuleMember -Function * -Variable * -Alias *
