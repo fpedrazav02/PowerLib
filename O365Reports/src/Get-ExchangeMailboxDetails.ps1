@@ -4,9 +4,9 @@
 .DESCRIPTION
     Wrapper of Get-MailBoxes.
 .EXAMPLE
-    # RELLENAR
+    Get-ExchangeBoxDetails -Mailboxes $Mailboxes
 .EXAMPLE
-    # RELLENAR 
+    Get-ExchangeBoxDetails -Mailboxes "aaa@contoso.com","bbb@contoso.com" -Output "GRID" 
 .INPUTS
 
 .NOTES
