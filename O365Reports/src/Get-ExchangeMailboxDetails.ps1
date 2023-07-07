@@ -8,7 +8,13 @@
 .EXAMPLE
     Get-ExchangeBoxDetails -Mailboxes "aaa@contoso.com","bbb@contoso.com" -Output "GRID" 
 .INPUTS
-
+    Mailboxes:
+        Dtype: string[]
+        * Input users, resources and group mailboxes
+    Output:
+        Dtype: string
+        Options: "CSV","GRID","HTML"
+        *
 .NOTES
     You must instanciate a Session with Connect-ExchangeOnline and have the appropiate perms prior to executing this CMD.
         1) Connect-ExchangeOnline
@@ -25,7 +31,7 @@ function Get-ExchangeMailboxDetails {
         [Parameter(Mandatory=$true,ParameterSetName="Exchange MailBoxes")]
         [ValidateNotNullOrEmpty()]
         [ValidateNotnull()]
-        [System.Array]
+        [string[]]
         $Mailboxes,
 
         #Param Output
