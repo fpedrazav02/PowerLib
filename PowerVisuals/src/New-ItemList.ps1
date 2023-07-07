@@ -10,18 +10,5 @@ function New-ItemList {
         [string]$backgroundColor = "Black"
     )
 
-    # Get the width of the console window
-    $consoleWidth = $Host.UI.RawUI.BufferSize.Width
-
-    # Calculate the number of spaces needed to center the text
-    $padding = ($consoleWidth - $text.Length) / 2
-
-    # Generate the padding string
-    $paddingString = " " * $padding
-
-    # Create the formatted text
-    $formattedText = $paddingString + $text
-
-    # Print the formatted text with custom colors
-    Write-Host $formattedText -ForegroundColor $colorText -BackgroundColor $backgroundColor
+    $character = '├─'
 }
