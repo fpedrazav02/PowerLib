@@ -46,7 +46,7 @@ function Get-ExchangeMailboxDetails {
             $cmdImport = "`e[1m$finalText`e[0m"
             Clear-Host
             New-PSPrompt -text "Please import module classes with: "
-            New-CenteredText "$cmdImport"
+            New-CenteredText -text "$cmdImport" -colorText Cyan
             New-Divider
             exit 1
         }
