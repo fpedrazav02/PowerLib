@@ -40,7 +40,8 @@ function Get-ExchangeMailboxDetails {
             [void][ExchangeMailbox]::new()
         }
         catch {
-            <#Do this if a terminating exception happens#>
+            New-PSPrompt -text "Please import module classes with: ","$($PSScriptRoot)"
+            exit 1
         }
         try {
             $connections = Get-ConnectionInformation | Select-Object -Property Name | ForEach-Object {$_ -like "*ExchangeOnline*"}
