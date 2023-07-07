@@ -11,7 +11,7 @@
 Import specific module:
     Import-Module -Name ".\PowerLibrary\moduleA"
 #>
-
+using module ".\O365Reports\classes\ExchangeReport.Class.psm1"
 $Modules = Get-ChildItem $PSScriptRoot -Directory
 $exceptions = @('.vscode')
 
