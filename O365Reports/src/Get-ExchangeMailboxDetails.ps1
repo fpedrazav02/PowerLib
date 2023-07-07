@@ -74,6 +74,8 @@ function Get-ExchangeMailboxDetails {
                 }
                 catch {
                     $obj = [ExchangeMailbox]::new()
+                    $obj.Mail = $mbox
+                    $obj.MailboxType = "NO MAILBOX"
                 }
                 finally{
                     $MailBoxArr += $obj
