@@ -36,7 +36,12 @@ function Get-ExchangeMailboxDetails {
         $Output
     )
     Begin{
-        
+        try {
+            [void][ExchangeMailbox]::new()
+        }
+        catch {
+            <#Do this if a terminating exception happens#>
+        }
         try {
             $connections = Get-ConnectionInformation | Select-Object -Property Name | ForEach-Object {$_ -like "*ExchangeOnline*"}
             if ($true -in $connections)
