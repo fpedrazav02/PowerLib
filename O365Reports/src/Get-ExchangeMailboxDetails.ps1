@@ -56,23 +56,29 @@ function Get-ExchangeMailboxDetails {
             $count = 0
             foreach ($mbox in $Mailboxes)
             {
-                $obj = [ExchangeMailbox]::new()
-                $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
-                    
-                Start-Sleep 1
-                $obj.ID = $count
-                $obj.Mail = $UserData.WindowsLiveID
-                $obj.ExchangeGuid = $UserData.ExchangeGuid
-                $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
-                $obj.IsDirSynced = $UserData.IsDirSynced
-                $obj.AccountType = $UserData.RecipientType
-                $obj.MailboxType = $UserData.RecipientTypeDetails
-                $obj.Smtps = $UserData.EmailAddresses
-                $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
-                $obj.CreationDate = $UserData.WhenCreated
+                try {
+                    $obj = [ExchangeMailbox]::new()
+                    $UserData = Get-MailBox -Identity $mbox | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
+                        
+                    Start-Sleep 1
+                    $obj.ID = $count
+                    $obj.Mail = $UserData.WindowsLiveID
+                    $obj.ExchangeGuid = $UserData.ExchangeGuid
+                    $obj.IsMailboxEnabled = $UserData.IsMailboxEnabled
+                    $obj.IsDirSynced = $UserData.IsDirSynced
+                    $obj.AccountType = $UserData.RecipientType
+                    $obj.MailboxType = $UserData.RecipientTypeDetails
+                    $obj.Smtps = $UserData.EmailAddresses
+                    $obj.PrimarySmtpAddress = $UserData.PrimarySmtpAddress
+                    $obj.CreationDate = $UserData.WhenCreated 
+                }
+                catch {
 
-                $MailBoxArr += $obj
-                $count = $count + 1
+                }
+                finally{
+                    $MailBoxArr += $obj
+                    $count = $count + 1
+                }
             }
         }
     End{
