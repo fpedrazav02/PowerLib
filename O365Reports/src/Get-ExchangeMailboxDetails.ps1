@@ -14,7 +14,7 @@
     Output:
         Dtype: string
         Options: "CSV","GRID","HTML"
-        *
+        * Type of Output you want to export
 .NOTES
     You must instanciate a Session with Connect-ExchangeOnline and have the appropiate perms prior to executing this CMD.
         1) Connect-ExchangeOnline
