@@ -12,6 +12,7 @@ Import specific module:
     Import-Module -Name ".\PowerLibrary\moduleA"
 #>
 
+Import-Module -Name "$($PSScriptRoot)\O365Reports\"  -Force -Verbose
 Import-Module -Name "$PSScriptRoot\AD"  -Force 
 Import-Module -Name "$PSScriptRoot\PowerVisuals"  -Force
 Import-Module -Name "$($PSScriptRoot)\O365Reports"  -Force -Verbose
