@@ -23,7 +23,7 @@ foreach ($module in $Modules)
     }
 }
 
-Import-Module -name '.\O365Reports\classes\ExchangeReport.Class.ps1' -Force -Verbose
+Import-Module -name "$($PSScriptRoot)\O365Reports\classes\ExchangeReport.Class.ps1" -Force -Verbose
 
 Export-ModuleMember -Function * -Cmdlet * -Alias *
     
