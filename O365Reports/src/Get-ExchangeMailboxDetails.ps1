@@ -69,6 +69,8 @@ function Get-ExchangeMailboxDetails {
         }
         catch {
             New-PSPrompt -text "You must first connect to exchange online"
+            New-CenteredText -text "Connect-ExchangeOnline" -colorText Cyan
+            New-Divider
             exit 1
         }
     }
