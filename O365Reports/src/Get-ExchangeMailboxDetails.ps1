@@ -83,7 +83,6 @@ function Get-ExchangeMailboxDetails {
                     $obj = [ExchangeMailbox]::new()
                     $UserData = Get-MailBox -Identity $mbox -ErrorAction Stop | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
                         
-                    Start-Sleep 1
                     $obj.ID = $count
                     $obj.Mail = $UserData.WindowsLiveID
                     $obj.ExchangeGuid = $UserData.ExchangeGuid
@@ -106,6 +105,7 @@ function Get-ExchangeMailboxDetails {
                     New-Divider
                     New-CenteredText -text "Loading Mailbox $($count) out of $($Mailboxes.Count)"
                     New-Divider
+                    Start-Sleep 1
                 }
             }
         }
