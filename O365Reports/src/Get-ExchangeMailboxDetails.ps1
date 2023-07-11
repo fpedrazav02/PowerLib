@@ -103,7 +103,7 @@ function Get-ExchangeMailboxDetails {
                     $MailBoxArr += $obj
                     $count = $count + 1
                     New-Divider
-                    New-CenteredText -text "Loading Mailbox $($count) out of $($Mailboxes.Count)"
+                    New-CenteredText -text "$($count) out of $($Mailboxes.Count)"
                     New-Divider
                     Start-Sleep 1
                 }
