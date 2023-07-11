@@ -78,6 +78,7 @@ function Get-ExchangeMailboxDetails {
             $count = 0
             foreach ($mbox in $Mailboxes)
             {
+                Clear-Host
                 try {
                     $obj = [ExchangeMailbox]::new()
                     $UserData = Get-MailBox -Identity $mbox -ErrorAction Stop | Select-Object WindowsLiveID,ExchangeGuid,IsMailboxEnabled,IsDirSynced,RecipientTypeDetails,RecipientType,PrimarySmtpAddress,EmailAddresses,WhenCreated
@@ -102,6 +103,9 @@ function Get-ExchangeMailboxDetails {
                 finally{
                     $MailBoxArr += $obj
                     $count = $count + 1
+                    New-Divider
+                    New-CenteredText -text "Loading Mailbox $($count) out of $($Mailboxes.Count)"
+                    New-Divider
                 }
             }
         }
