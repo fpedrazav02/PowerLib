@@ -10,12 +10,7 @@
 .INPUTS
 
 .NOTES
-    You will need the following dependencies:
-        1) Test
-        2)
-
-    Import-Module -Name ".\PowerLibrary\moduleA"
-#>
+#> #TODO
 
 function Get-ADUserList {
 

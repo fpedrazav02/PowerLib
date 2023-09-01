@@ -1,20 +1,16 @@
 <#
 .Synopsis
-    Generate diferent Outputs for fast AD User lists and fields. Export in diferent formats.
+    Show a modern looking JOB dashboard on your daily scripts.
 .DESCRIPTION
-    Wrapper of Get-ADUser which lets you get a more usefull output as well as easier bulk operations and outputs.
+   Show-Dasboard is a CMD which receives a custom object and is modified in order to display a more modern look t
+    standard output. More organized as well as full customizable.
 .EXAMPLE
     # RELLENAR
 .EXAMPLE
     # RELLENAR 
 .INPUTS
 
-.NOTES
-    You will need the following dependencies:
-        1) Test
-        2)
-
-    Import-Module -Name ".\PowerLibrary\moduleA"
+.NOTES #TODO
 #>
 
 function Show-Dashboard {
@@ -60,8 +56,6 @@ function Show-Dashboard {
             Write-Host $userLineProcessStatus
 
             Write-Host $line -ForegroundColor $dividerColor
-
-            #Table
     }
     End{
 
